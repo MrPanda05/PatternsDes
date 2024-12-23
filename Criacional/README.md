@@ -1,14 +1,14 @@
-Pattern Criacional
+# Pattern Criacional
 
-Factory method pattern
+## Factory method pattern
 
-Intenção:
+### **Intenção**:
 
 Factory method é um pattern criacional que prove um interface para criação de objetos em um super classe, contudo permite que subclasses permitam alternar
 o tipo de objeto que será criado
 
 
-Problema:
+### **Problema**:
 
 Imagine que você está criando uma aplicação de gerencição de logisticas. A primeira versão do seu app pode somemente lidar com transportação de caminhões, então a maioria
 do codigo vive dentro da classe Caminhao.
@@ -19,7 +19,7 @@ seu projeto inteiro. Contudo, if depois você decidir adcionar outro meio de tra
 
 Como resultado, você ficara com um codigo tão spagetificado que é melhor jogar fora e começar denovo.
 
-Solução:
+### **Solução**:
 
 O Factory method pattern sugere que você substitua a chamada de criação direta(usando o operador new) por uma chamada especial. Não se preocupe: os objects continuam sendo
 criado pelo operator new, mas são chamada dendro de um metodo fabrica. Objetos retornado por um factory methodo são geralmente chamados de produtos.
@@ -32,23 +32,68 @@ deve ter seu retorno como o tipo declarado na sua interface
 
 
 
-Codigo:
+## Codigo:
 
-Exemplo: Tipos de impressoras, uma impressora de dinheiro e uma impressora 3d
+### Descrição de Exemplo: Tipos de impressoras, e cada fabrica cria a impressora que nescessita.
+
+IPrinter.cs{
+ interface de oque a impressora deve imprimir
+
+ propriedades Nome e Quantidade
+
+ methodos Impressao()
+}
+
+ImpressoraDeDinheiro.cs{
+
+Implementação concreta de IPrinter
+
+Propriedade Nome recebe o nome do dinheiro sendo impresso
+Propriedade Quantidade Recebe o quanto deve ser imprimido
+
+methodos Impressao() retorna o quanto foi imprimido
+
+}
+
+Impressora3D.cs{
+
+Implementação concreta de IPrinter
+
+Propriedade Nome recebe o nome da carne falsa sendo imprimida
+Propriedade Quantidade Recebe o quanto deve ser imprimido
+
+methodos Impressao() retorna o quanto foi imprimido
+
+}
 
 
+Impressor.cs{
+Classe abstrata, é quem cria as fabrica
 
+Metodo abastrato FactoryMethod que retorna um IPrinter
 
+metodo ResultadoImpressao() que imprime o resultado da impresão ao criar um produto
+}
 
+Governo.cs{
+Implementação concreta de Impressor
 
+Override no Factory method para criar uma nova instancia de ImpressoraDeDinheiro
+}
 
+CarneVegana.cs{
+Implementação concreta de Impressor
 
+Override no Factory method para criar uma nova instancia de Impressora3D
 
+}
 
+Program.cs da linha 30 à 33{
+Cria instancia de CarneVegana chamada veganMeat
+Cria instancia de Governo chamada brazil
+Chama o resultado de impressão de veganMeat
+Chama o resultado de impressão de brazil
 
+}
 
-
-
-
-
-https://refactoring.guru/design-patterns/factory-method
+[Refactoring guro factory method](https://refactoring.guru/design-patterns/factory-method)

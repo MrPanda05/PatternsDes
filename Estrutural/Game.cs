@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PatternsDes.Estrutural
 {
-    public class Game
+    public abstract class Game
     {
         protected IPlatform _platforma;
 

@@ -1,13 +1,13 @@
-Pattern comportamental
+# Pattern comportamental
 
-Observer pattern
+## Observer pattern
 
-Intenção:
+### **Intenção**:
 
 Observer pattern é um padrão comportamental, que deixa você definir um mecanismo de assinatura para notificar multiplos objetos sobre quaisquer eventos, que ocorreram em tal objeto
 sendo observado
 
-Problema:
+### **Problema**:
 
 Imagine que tu possua dois tipos de objetos, um Cliente e um Loja. O cliente é super interesado em uma marca particular de um produto(O novo modelo do iPhone por exemplo) que deve
 estar disponivel nas lojas em breve.
@@ -24,7 +24,7 @@ notificar todoas as instancias do tipo cliente, mas somente os clientes que est�
 que aquilo aconteceu.
 
 
-Solução:
+### **Solução**:
 
 O objeto que tem um estado interessante é geralmente chamado de subject, mas como este também é quem irá notificar outros objetos sobre sua mudança de estado, chamaremos-o de
 publisher. Todos os outros objetos que queiram saber de mudanças do estado do publisher são chamados de subscribers.
@@ -43,9 +43,9 @@ Na implementação concreta da Publisher, implementar um vetor que guarda todos 
 Nota: Em c# há uma forma de implementar basicamente a mesma coisa por meio de delegates, contudo a versao usando interface é uma forma mais generica.
 
 
-Codigo:
+## Codigo:
 
-Exemplo: Youtuber notificando seus inscritos que postou um video novo
+### Descrição de Exemplo: Youtuber notificando seus inscritos que postou um video novo
 
 INotifier.cs{
 
@@ -81,7 +81,7 @@ Exemplo concreto de um IObserver
 Metodo Update() é overrided para printar que algum video novo foi lançado
 }
 
-Program.cs da linha 15 à 23{
+Program.cs da linha 16 à 27{
 Cria uma instancia Youtuber chamada enaldinho
 Cria 3 instancia inscrito, Incrito1, Inscrito2 e Inscrito3
 instancia Enaldinho inscreve cada inscrito respectivamente.
@@ -89,8 +89,4 @@ instancia Enaldinho desemscreve o incrito2
 Enaldinho avisa aos incritos
 }
 
-
-
-
-
-https://refactoring.guru/design-patterns/observer
+[Refactoring guru observer](https://refactoring.guru/design-patterns/observer)

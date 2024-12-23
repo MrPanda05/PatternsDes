@@ -28,18 +28,18 @@ namespace PatternsDes
             //Implementação Factory pattern
             Console.WriteLine("Criational Pattern | Factory method pattern");
             var veganMeat = new CarneVegana();
-            veganMeat.ResultadoImpressao();
             var brazil = new Governo();
+            veganMeat.ResultadoImpressao();
             brazil.ResultadoImpressao();
 
             //Implementação Bridge pattern
             Console.WriteLine("Estructural Pattern | Bridge pattern");
-            var Bubunto = new Bubunto();
-            var Bintows12 = new Bintows12();
-            var meguminBubunto = new MeguminAdventures(Bubunto);
-            var meguminBintows12 = new MeguminAdventures(Bintows12);
-            var chess2Bubunto = new Chess2(Bubunto);
-            var chess2Bintows12 = new Chess2(Bintows12);
+            var bubunto = new Bubunto();
+            var bintows12 = new Bintows12();
+            var meguminBubunto = new MeguminAdventures(bubunto);
+            var meguminBintows12 = new MeguminAdventures(bintows12);
+            var chess2Bubunto = new Chess2(bubunto);
+            var chess2Bintows12 = new Chess2(bintows12);
             meguminBubunto.Operation();
             chess2Bubunto.Operation();
             meguminBintows12.Operation();

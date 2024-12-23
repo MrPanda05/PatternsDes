@@ -1,13 +1,13 @@
-Pattern Estrutural
+# Pattern Estrutural
 
-Bridge pattern
+## Bridge pattern
 
-Intenção:
+### **Intenção**:
 
 Bridge é um design pattern estrutural que te deixa dividir uma grande classe ou uma coleção de classes relacionadas in duas hierarquias separadas - abastração e implementação -
 na qual podem se desenvolver independentes entre si.
 
-Problema:
+### **Problema**:
 
 Abstração? Implementação? aparece assustador? Fique calmo e vamos considerar um exemplo simples.
 
@@ -20,7 +20,7 @@ Se você adcionar outras cores mais subclasses surgiram.
 Basicamente um herança dando problemas de herança.
 
 
-Solução:
+### **Solução**:
 
 O probelma ocorre quando estamos tentando extender a class Forma nesse caso em duas dimensões independentes, for forma e por cor. Isso é um problema com herança.
 
@@ -34,22 +34,69 @@ adcionar novas cores não irá requerer modificar a hieraquia da forma e vice ve
 No contexto desse patern, abstração ou interface se refere a uma camada de controle para alguma entidade, algo que não faz nada em si mesmo, como uma GUI, já a implementação é
 alog que realmente faz algo, tipo a API de um app. Então a abstração deve delegar o trabalho para a implementação.
 
-
-
-
 Basicamente é uma forma de dizer pra preferir composição ao invez de herança.
 
+## Codigo:
+
+### Descrição de Exemplo: Video games que podem rodar em qualquer sistema operacional
+
+IPlatform.cs{
+interface que server como um sistema operacional deve rodar o game
+
+Propriedade Name, nome do sistema
+
+Metodo RunGame() como se deve rodar o game
+}
+
+Bintows12.cs{
+Implementação concreta de IPlatform
+
+Prorpiedade Name recebe "Bintows12"
+
+Metodo RunGame() roda um game qualquer no sistema operacional Bintows12
+}
+
+Bubunto.cs{
+Implementação concreta de IPlatform
+
+Prorpiedade Name recebe "Bubunto"
+
+Metodo RunGame() roda um game qualquer no sistema operacional Bubunto
+}
+
+Game.cs {
+Classe abstrata que representa um vidoe game qualquer.
+
+Tem um propriedade que recebe um IPlatform
+
+metodo Operation(), chama o RunGame de Iplatform 
+}
+
+Chess2.cs {
+implementação concreta de Game
+
+metodo operation tome override pra dizer que esta rodando em tal platforma
+}
+
+MeguminAdventures.cs {
+implementação concreta de Game
+
+metodo operation tome override pra dizer que esta rodando em tal platforma
+}
+
+Program.cs da linha 37 até 46{
+Cria intancia de Bintows12 chama bintows12
+Cria intancia de Bubunto chama bubunto
+Cria instancia de MeguminAdventures que sera rodando no Bubunto, chamada meguminBubunto e recebe bubunto no constructor
+Cria instancia de MeguminAdventures que sera rodando no Bintows12, chamada meguminBubunto e recebe bintows12 no constructor
+Cria instancia de Chess2 que sera rodando no Bubunto, chamada chess2Bubunto e recebe bubunto no constructor
+Cria instancia de Chess2 adventures que sera rodando no Bintows12, chamada chess2Bubunto e recebe bintows12 no constructor
+Chama o metodo operation() de cada instancia de Game
+}
 
 
-Codigo:
 
-Exemplo: Video games que podem rodar em qualquer sistema operacional
-
-
-
-
-
-https://refactoring.guru/design-patterns/bridge
+[Refactoring guru Bridge](https://refactoring.guru/design-patterns/bridge)
 
 
 
@@ -59,5 +106,3 @@ https://refactoring.guru/design-patterns/bridge
 
 
 
-
-https://refactoring.guru/design-patterns/bridge
